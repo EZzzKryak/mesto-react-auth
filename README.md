@@ -1,5 +1,5 @@
 ![alt teg](https://s1.hostingkartinok.com/uploads/images/2023/05/6984a6f6760d042caea738c786fd5703.png)
-[:point_right: _Ссылка на проект_ :point_left:](https://ezzzkryak.github.io/react-mesto-auth/)
+[:point_right: _Ссылка на проект_ :point_left:](https://ezzzkryak.github.io/mesto-react-auth/)
 # Проектная работа  Mesto: регистрация и авторизация
 ### Описание проекта :book:
 Проект тесно связан его с прошлой версией, написанной на нативном JS. Ознакомиться можно по [ссылке](https://github.com/EZzzKryak/mesto).
