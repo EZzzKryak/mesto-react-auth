@@ -110,15 +110,16 @@ function App() {
       .registerUser(formData)
       .then(res => {
         setTooltipStatus(true);
-        setIsTooltipPopupOpen(true);
         callback();
         navigate("/login");
       })
       .catch(err => {
         console.log(err);
         setTooltipStatus(false);
+      })
+      .finally(() => {
         setIsTooltipPopupOpen(true);
-      });
+      })
   };
 
   const handleSignOut = () => {
