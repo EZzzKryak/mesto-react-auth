@@ -40,7 +40,7 @@ function App() {
 
   const [email, setEmail] = useState("");
 
-  const [authStatus, setAuthStatus] = useState(false);
+  const [tooltipStatus, setTooltipStatus] = useState(false);
 
   const navigate = useNavigate();
 
@@ -69,13 +69,17 @@ function App() {
       const jwt = localStorage.getItem("jwt");
       if (jwt) {
         // проверим токен
-        auth.getContent(jwt).then(res => {
+        auth.getContent(jwt)
+        .then(res => {
           if (res) {
             setCurrentUser(currentUser);
             setEmail(res.data.email);
             setLoggedIn(true);
             navigate("/");
           }
+        })
+        .catch(err => {
+          console.log(err);
         });
       }
     }
@@ -87,6 +91,7 @@ function App() {
       .then(res => {
         // нужно проверить, есть ли у данных jwt
         if (res.token) {
+          localStorage.setItem('jwt', res.token);
           setEmail(formData.email);
           setLoggedIn(true);
           callback();
@@ -95,7 +100,7 @@ function App() {
       })
       .catch(err => {
         console.log(err);
-        setAuthStatus(false);
+        setTooltipStatus(false);
         setIsTooltipPopupOpen(true);
       });
   };
@@ -104,18 +109,15 @@ function App() {
     auth
       .registerUser(formData)
       .then(res => {
+        setTooltipStatus(true);
         setIsTooltipPopupOpen(true);
-        // Костыль с res.data
-        if (res.data) {
-          setAuthStatus(true);
-          callback();
-          navigate("/login");
-        } else {
-          setAuthStatus(false);
-        }
+        callback();
+        navigate("/login");
       })
       .catch(err => {
         console.log(err);
+        setTooltipStatus(false);
+        setIsTooltipPopupOpen(true);
       });
   };
 
@@ -285,7 +287,7 @@ function App() {
           <InfoTooltip
             isOpen={isTooltipPopupOpen}
             onClose={closeAllPopups}
-            authStatus={authStatus}
+            tooltipStatus={tooltipStatus}
           />
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import { usePopupClose } from "../hooks/usePopupClose";
-import authStatusFailed from "../images/popup__auth-failed.svg";
-import authStatusSuccess from "../images/popup__auth-success.svg";
+import tooltipStatusFailed from "../images/popup__auth-failed.svg";
+import tooltipStatusSuccess from "../images/popup__auth-success.svg";
 
-const InfoTooltip = ({ isOpen, onClose, authStatus }) => {
+const InfoTooltip = ({ isOpen, onClose, tooltipStatus }) => {
   usePopupClose(isOpen, onClose);
   return (
     <div className={`popup popup_type_tooltip ${isOpen && " popup_opened"}`}>
@@ -16,11 +16,11 @@ const InfoTooltip = ({ isOpen, onClose, authStatus }) => {
         ></button>
         <img
           className="popup__img-tooltip"
-          src={authStatus ? authStatusSuccess : authStatusFailed}
+          src={tooltipStatus ? tooltipStatusSuccess : tooltipStatusFailed}
           alt="Иконка статуса регистрации"
         />
         <h2 className="popup__title">
-          {authStatus
+          {tooltipStatus
             ? "Вы успешно зарегистрировались!"
             : "Что-то пошло не так! Попробуйте ещё раз."}
         </h2>
