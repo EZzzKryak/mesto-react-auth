@@ -18,7 +18,6 @@ const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading }) => {
       onUpdateAvatar({
         avatar: link,
       });
-      resetForm();
     }
   };
 

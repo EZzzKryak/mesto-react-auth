@@ -19,7 +19,6 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace, isLoading }) => {
         name,
         link,
       });
-      resetForm();
     }
   };
 
