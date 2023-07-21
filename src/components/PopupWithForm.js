@@ -22,7 +22,7 @@ const PopupWithForm = ({
           className="popup__close"
           aria-label="Закрыть"
           onClick={onClose}
-        ></button>
+        />
         <h2 className="popup__title">{title}</h2>
         <form
           className={`popup__form popup__form_type_${name}`}
