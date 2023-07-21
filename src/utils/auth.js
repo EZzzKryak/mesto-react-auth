@@ -1,3 +1,5 @@
+import { handleRequest } from "./utils";
+
 class Auth {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
@@ -14,13 +16,7 @@ class Auth {
         password,
       }),
     })
-      .then(res => {
-        return res.json();
-      })
-      .then(res => {
-        return res;
-      })
-      .catch(err => console.log(err));
+      .then(handleRequest);
   }
 
   authorizeUser({ email, password }) {
@@ -30,18 +26,11 @@ class Auth {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email, 
+        email,
         password,
       })
     })
-    .then((res => res.json()))
-    .then((data) => {
-      if (data.token){
-        localStorage.setItem('jwt', data.token);
-        return data;
-      }
-    })
-    .catch(err => console.log(err))
+    .then(handleRequest);
   }
 
   getContent(token) {
@@ -52,9 +41,7 @@ class Auth {
         'Authorization': `Bearer ${token}`,
       }
     })
-    .then(res => res.json())
-    .then(data => {
-      return data})
+    .then(handleRequest);
   }
 }
 
